@@ -1,0 +1,16 @@
+# Environment variables (Sangat penting agar password database tidak bocor)
+.env
+
+# Composer dependencies (Ukurannya sangat besar dan tidak perlu diupload)
+vendor/
+
+# Writable directory (Berisi cache, logs, dan session yang spesifik untuk komputer lokal)
+writable/
+
+# Node modules (Jika ada)
+node_modules/
+/node_modules
+
+# File sistem OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambaran Knowledge Graph</title>
+    <!-- Memuat library Vis.js Network -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
+        #mynetwork {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #d1d8e0;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header { text-align: center; margin-bottom: 20px; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>Contoh Visualisasi Knowledge Graph Lab Elektro</h2>
+        <p>Anda dapat menggeser (drag) ikon-ikon di bawah ini. Ini adalah gambaran bagaimana data akan direpresentasikan.</p>
+    </div>
+
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+        // 1. Membuat data Nodes (Simpul / Entitas)
+        var nodes = new vis.DataSet([
+            { id: 1, label: 'Dwiky Ilham\n(Mahasiswa)', shape: 'circularImage', image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', color: '#3498db' },
+            { id: 2, label: 'Misbah Anuari\n(Mahasiswa)', shape: 'circularImage', image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', color: '#3498db' },
+            { id: 3, label: 'Admin Utama\n(Admin)', shape: 'circularImage', image: 'https://cdn-icons-png.flaticon.com/512/2942/2942813.png', color: '#e74c3c' },
+            
+            { id: 101, label: 'Oscilloscope Digital\n(Tersedia: 12)', shape: 'box', color: '#f39c12', font: {color: 'white'} },
+            { id: 102, label: 'Signal Generator\n(Tersedia: 5)', shape: 'box', color: '#f39c12', font: {color: 'white'} },
+            { id: 103, label: 'Multimeter Digital\n(Tersedia: 30)', shape: 'box', color: '#f39c12', font: {color: 'white'} }
+        ]);
+
+        // 2. Membuat data Edges (Garis / Relasi)
+        var edges = new vis.DataSet([
+            { from: 1, to: 101, label: 'Meminjam\n(2 unit)', arrows: 'to', color: {color: '#2ecc71'} },
+            { from: 2, to: 102, label: 'Meminjam\n(1 unit)', arrows: 'to', color: {color: '#2ecc71'} },
+            { from: 2, to: 101, label: 'Meminjam\n(1 unit)', arrows: 'to', color: {color: '#2ecc71'} },
+            { from: 3, to: 101, label: 'Mengelola', arrows: 'to', color: {color: '#bdc3c7'} },
+            { from: 3, to: 102, label: 'Mengelola', arrows: 'to', color: {color: '#bdc3c7'} },
+            { from: 3, to: 103, label: 'Mengelola', arrows: 'to', color: {color: '#bdc3c7'} }
+        ]);
+
+        // 3. Konfigurasi jaringan
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            nodes: {
+                borderWidth: 2,
+                size: 40,
+                font: { size: 14 }
+            },
+            edges: {
+                width: 2,
+                font: { size: 12, align: 'middle' },
+                smooth: { type: 'continuous' }
+            },
+            physics: {
+                barnesHut: { gravitationalConstant: -2000, springLength: 150 }
+            }
+        };
+
+        // 4. Inisialisasi network
+        var network = new vis.Network(container, data, options);
+    </script>
+</body>
+</html>

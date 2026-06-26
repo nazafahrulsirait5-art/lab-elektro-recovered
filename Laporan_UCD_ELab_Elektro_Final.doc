@@ -1,0 +1,836 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1057
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fmodern\fcharset0 Courier New;}}
+{\colortbl;\red0\green0\blue0;\red230\green230\blue230;}
+{\info{\title Laporan Evaluasi UCD E-Lab Elektro}{\author Tim E-Lab Elektro}{\company Universitas Syiah Kuala}}
+\widowctrl\hyphauto
+\margl2268\margr1701\margt1440\margb1440
+\f0\fs24\cf0\sl360\slmult1
+\pard\qc\sb1200\sa0\f0\fs24\cf0\sl360\slmult1\b UNIVERSITAS SYIAH KUALA\par
+\pard\qc\sb40\sa0\f0\fs24\cf0\sl360\slmult1\b0 Program Studi Teknik Elektro \emdash  Fakultas Teknik\par
+\pard\qc\sb0\sa0\brdrb\brdrs\brdrw20\brdrcf0 \par
+\pard\sb0\sa400\par
+\pard\qc\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b LAPORAN EVALUASI UI/UX\par
+\pard\qc\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b SISTEM E-LAB ELEKTRO\par
+\pard\qc\sb0\sa0\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\sb0\sa200\par
+\pard\qc\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 Pendekatan User-Centered Design (UCD) dan Evaluasi Heuristik Nielsen\par
+\pard\sb0\sa400\par
+\pard\qc\sb0\sa60\f0\fs24\cf0\sl360\slmult1\b0 Disusun oleh:\par
+\pard\qc\sb0\sa60\f0\fs24\cf0\sl360\slmult1\b Tim Pengembang E-Lab Elektro\par
+\pard\qc\sb0\sa60\f0\fs24\cf0\sl360\slmult1\b0 Program Studi Teknik Elektro\par
+\pard\qc\sb0\sa60\f0\fs24\cf0\sl360\slmult1\b0 Universitas Syiah Kuala\par
+\pard\sb0\sa400\par
+\pard\qc\sb0\sa0\f0\fs24\cf0\sl360\slmult1\b0 Banda Aceh, 2025\par
+\page
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 1. PENDAHULUAN\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Laboratorium Teknik Elektro Universitas Syiah Kuala (USK) menyimpan ratusan unit alat ukur dan komponen elektronika yang digunakan oleh mahasiswa untuk praktikum dan tugas akhir. Proses peminjaman alat yang selama ini dilakukan secara manual dengan buku catatan fisik menimbulkan berbagai masalah operasional:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Mahasiswa tidak mengetahui ketersediaan alat sebelum datang ke lab secara fisik.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Penjaga lab harus menghitung denda keterlambatan secara manual dan rawan keliru.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Kaprodi tidak memiliki data analitik real-time tentang penggunaan dan kondisi alat.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Tidak ada rekam jejak digital aktivitas peminjaman untuk keperluan audit.\par
+\pard\sb0\sa160\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Sistem E-Lab Elektro dikembangkan sebagai solusi berbasis web menggunakan framework CodeIgniter 4 (PHP 8.3) dengan database MySQL 8.4, yang mengintegrasikan dua paradigma pengelolaan data:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Relational Database (MySQL): untuk manajemen transaksi CRUD peminjaman alat secara terstruktur.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Knowledge Graph (Graf Semantik SVG): untuk eksplorasi relasi semantik antar entitas (Mahasiswa, Alat, Mata Kuliah, Dosen, Ruang Lab) secara visual dan interaktif.\par
+\pard\sb0\sa160\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Laporan ini mendokumentasikan evaluasi UI/UX sistem E-Lab Elektro mengacu pada dua metodologi ilmiah: User-Centered Design (UCD) dan Evaluasi Heuristik Nielsen, dengan seluruh isi yang diambil secara akurat dari sistem yang berjalan di http://localhost:8080/ucd-showcase.\par
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 2. IDENTIFIKASI PENGGUNA (USER PERSONA)\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Melalui wawancara dan observasi langsung di Laboratorium Teknik Elektro USK, diidentifikasi empat kategori pengguna utama sistem E-Lab Elektro:\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 2.1  Mahasiswa \u8212? Dwiky Ilham\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Atribut\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Keterangan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Nama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dwiky Ilham\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Role dalam Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa (NPM: 250420501100004)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Karakteristik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa semester akhir yang sedang menyusun tugas akhir praktikum. Sering meminjam alat ukur seperti Oscilloscope Digital dan Signal Generator Rigol.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Frustrasi Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Peminjaman manual memakan waktu lama; tidak ada kejelasan apakah alat tersedia sebelum datang ke lab secara fisik.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kebutuhan Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Katalog inventaris real-time, keranjang peminjaman cepat, pengingat batas waktu pengembalian otomatis.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Fitur yang Digunakan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Katalog Alat, Keranjang Peminjaman, Prototype Interaktif (simulator 4 langkah)\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 2.2  Penjaga Lab \u8212? Misbah Anuari\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Atribut\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Keterangan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Nama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Misbah Anuari\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Role dalam Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga Lab (tampil juga sebagai Dr. Misbah Anuari \u8212? Dosen Pembimbing di Knowledge Graph)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Karakteristik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Asisten laboratorium yang bertugas mengelola fisik inventaris alat dan memvalidasi transaksi peminjaman harian.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Frustrasi Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sulit melacak mahasiswa yang terlambat mengembalikan alat; pencatatan denda manual di buku sering keliru.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kebutuhan Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard validasi satu klik, pencatatan otomatis status alat (rusak/maintenance), kalkulasi denda otomatis Rp 5.000/hari.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Fitur yang Digunakan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard Validasi, Manajemen Status Alat, Laporan Denda\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 2.3  Kepala Program Studi (Kaprodi) \u8212? Rana Sulthanah\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Atribut\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Keterangan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Nama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Rana Sulthanah\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Role dalam Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kaprodi \u8212? hanya akses laporan dan analitik, tidak memiliki fitur keranjang peminjaman\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Karakteristik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kepala Program Studi yang berfokus pada pengawasan aset dan pengambilan kebijakan anggaran laboratorium.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Frustrasi Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Laporan penggunaan lab sulit direkap; tidak tahu alat apa yang paling sering rusak dan butuh peremajaan.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kebutuhan Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard analitik statistik visual, ekspor laporan berkala otomatis (Excel/PDF), visualisasi tingkat kesehatan inventaris.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Fitur yang Digunakan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard Analitik, Ekspor Laporan Excel/PDF, Visualisasi Kesehatan Alat\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 2.4  Administrator \u8212? Admin Utama\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Atribut\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Keterangan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Nama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Administrator (Admin Utama)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Role dalam Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Admin Utama \u8212? akses penuh seluruh sistem\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Karakteristik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pengelola teknis sistem yang bertanggung jawab atas kelancaran operasional platform e-lab secara keseluruhan.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Frustrasi Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kehilangan rekam jejak aktivitas user jika terjadi manipulasi data ilegal (fraud) di sistem.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kebutuhan Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Audit log real-time (siapa, melakukan apa, kapan), manajemen akun, konfigurasi sistem.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Fitur yang Digunakan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Audit Log, Manajemen Akun, Konfigurasi Role, Monitoring Sistem\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 3. ANALISIS KEBUTUHAN PENGGUNA\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Berdasarkan identifikasi persona di atas, berikut pemetaan kebutuhan fungsional ke dalam fitur solusi sistem (sesuai tabel pada Tab 1 website):\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Kategori Kebutuhan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Deskripsi Fitur Solusi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Prioritas\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Peminjaman Mandiri\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa dapat memilih alat dari katalog, memasukkan ke keranjang, dan mengajukan peminjaman secara mandiri secara paperless.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Critical\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Katalog Stok Real-time\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sistem langsung mengurangi stok barang yang dipinjam dan menampilkan stok yang benar-benar siap di rak lab secara akurat.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Critical\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Persetujuan Fleksibel\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga lab dapat menyetujui peminjaman hanya dengan satu klik di dashboard tanpa tatap muka langsung terlebih dahulu.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Critical\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kalkulator Denda Otomatis\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Menghitung denda secara presisi (Rp 5.000/hari terlambat) sejak batas waktu berakhir, menghemat waktu penjaga lab.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 High\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Audit Log Keamanan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mencatat setiap tindakan penting (manipulasi stok, penghapusan transaksi) dalam tabel audit khusus untuk keamanan sistem.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Medium\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 4. USER FLOW DIAGRAM\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Sistem E-Lab Elektro mengimplementasikan dua paradigma alur interaksi yang berbeda secara fundamental, divisualisasikan sebagai SVG diagram pada Tab 2 website:\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 4.1  Alur Linear Relasional \u8212? CRUD Peminjaman Alat\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Alur ini mengikuti pola linear yang sederhana dan mudah diprediksi oleh mahasiswa:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Langkah\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Aksi dalam Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Pelaku\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Login ke sistem menggunakan NPM dan password terdaftar\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Buka Katalog Alat \u8212? cek status dan jumlah stok tersedia di rak\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Klik "Pinjam" \u8212? isi formulir jumlah unit (validasi tidak boleh melebihi stok)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 4\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Validasi Sistem \u8212? cek stok real-time dan status akun (tidak ada tunggakan)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sistem Otomatis\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 5\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Status berubah "Menunggu Persetujuan" \u8212? notifikasi terkirim ke Penjaga Lab\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sistem\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 6\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga Lab menyetujui/menolak dengan satu klik di Dashboard Validasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga Lab (Misbah)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 7\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pengembalian alat \u8212? Penjaga Lab konfirmasi \u8212? sistem kalkulasi denda otomatis jika terlambat\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga Lab & Sistem\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 4.2  Alur Eksplorasi Knowledge Graph \u8212? Semantic Exploration\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Alur ini bersifat non-linear dan exploratory, memungkinkan pengguna menemukan wawasan dari relasi antar data:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Langkah\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Aksi & Interaksi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Hasil\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Buka halaman Knowledge Graph \u8212? graf SVG dimuat dengan 5 node utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tampil: Dwiky, Oscilloscope, Prak.Mikro, Dr.Misbah, Lab Tele\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Single click pada node \u8212? misal klik node Dwiky (N1)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Panel "Detail Entitas Semantik" muncul di sidebar kanan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Double-click pada node N1 (Dwiky)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Node N7 (Naza Fahrul) muncul dengan edge REKAN_KLP\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 4\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Double-click pada node N2 (Oscilloscope)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Node N6 (Signal Generator Rigol) muncul dengan edge TERHUBUNG\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 5\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Gunakan panel Semantic Filtering \u8212? uncheck tipe entitas tertentu\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 5 filter: Mahasiswa, Alat, Mata Kuliah, Dosen, Ruang Lab\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 6\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Klik "Reset Grafik" untuk kembali ke kondisi awal\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Node N6 & N7 disembunyikan kembali, semua filter aktif\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 5. SITEMAP & STRUKTUR NAVIGASI\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Arsitektur informasi sistem E-Lab Elektro berdasarkan sitemap yang ditampilkan pada Tab 2 website:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Modul Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Sub-Halaman / Fitur\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Role yang Dapat Akses\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Gerbang Masuk (Auth)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Login dengan CAPTCHA; Registrasi Mahasiswa; Lupa Sandi & Reset Token via Email\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Publik (Semua)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Widget Statistik Ringkas; Peringatan Keterlambatan; Top 5 Alat Populer & Donut Chart\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Semua Role\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 UCD Showcase & Demo\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Laporan UCD & Evaluasi Heuristik; Visualisasi Knowledge Graph SVG; Simulasi Prototype Interaktif\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Semua Role\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Manajemen Inventaris (Alat)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Data Aset & CRUD; Cetak QR Code Label\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Penjaga Lab, Admin\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Transaksi Peminjaman\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Keranjang Belanja Alat; Validasi Denda & Pengembalian\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa, Penjaga Lab\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Laporan & Analitik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard Kaprodi; Ekspor Excel/PDF; Rekap Kondisi Alat\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kaprodi, Admin\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Manajemen Akun\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Daftar User; Edit Profil; Konfigurasi Role; Audit Log Aktivitas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Admin\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 6. WIREFRAME DAN MOCKUP\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 6.1  Perbandingan Lo-Fi Wireframe vs Hi-Fi Mockup\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Tab 3 website menampilkan toggle switch interaktif yang memungkinkan pengguna beralih antara Lo-Fi Wireframe dan Hi-Fi Mockup secara instan:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Aspek\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Lo-Fi Wireframe (Toggle OFF)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Hi-Fi Mockup (Toggle ON)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tampilan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kotak abu-abu, garis placeholder. Contoh: [LINGKARAN DIAGRAM KESEHATAN ALAT - PLACEHOLDER]\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Desain penuh: warna, shadow, border-radius, animasi hover\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Grafik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Placeholder teks kosong\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Donut chart nyata: Bagus (80%, hijau) dan Rusak (20%, merah)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tabel Inventaris\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Blok teks sederhana\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tabel responsif dengan tombol "Pinjam" orange rounded-pill\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Header Dashboard\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Teks tanpa styling\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Header ikon Flask, badge "Admin Utama", background dark navy\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tujuan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Komunikasi layout dan hierarki informasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Menunjukkan tampilan akhir kepada stakeholder\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 6.2  Dashboard Mockup \u8212? Data Real-Time dari Database\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Dashboard sistem menampilkan 4 widget statistik yang datanya diambil langsung dari database MySQL melalui UcdShowcase controller:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx7000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Widget Dashboard\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Query Database (PHP)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Warna Indikator\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Total Alat\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 $alatModel->countAllResults()\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Hitam/Netral\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tersedia di Rak\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 $alatModel->where('status', 'Tersedia')->countAllResults()\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Hijau (#10b981) \u8212? "Siap dipinjam"\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Alat Rusak\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 $alatModel->selectSum('jumlah_rusak')->first()\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Merah (#ef4444) \u8212? "Butuh perbaikan"\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx7000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pinjaman Aktif\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 $transaksiModel->where('status_pinjam', 'Dipinjam')->countAllResults()\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Biru (#3b82f6) \u8212? "Sedang di luar"\cell
+\row
+\pard\sb0\sa120\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Selain widget statistik, dashboard juga menampilkan:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Tabel "Aksi Cepat Inventaris": Oscilloscope Tektronix (12 Unit) dan Signal Generator Rigol (5 Unit) dengan tombol "Pinjam" berwarna orange rounded-pill.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Donut chart "Status Kesehatan Alat": Bagus 80% (hijau) dan Rusak 20% (merah).\par
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 7. JUSTIFIKASI DESAIN (DESIGN RATIONALE)\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Setiap keputusan desain dalam E-Lab Elektro dilandasi oleh teori UI/UX yang terukur, sebagaimana didokumentasikan pada Tab 3 website:\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 7.1  Hukum Fitts (Fitts's Law) \u8212? Penempatan Tombol Aksi\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Hukum Fitts menyatakan bahwa waktu yang dibutuhkan untuk menjangkau target adalah fungsi dari jarak ke target dan ukuran target tersebut. Semakin besar ukuran tombol dan semakin dekat posisinya, semakin cepat pengguna dapat mengkliknya.\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Penerapan di E-Lab Elektro: Tombol aksi utama seperti tombol "Pinjam" dan "Ajukan Peminjaman" dirancang dengan ukuran minimal 40px tinggi, menggunakan border-radius rounded-pill yang lebar, serta diletakkan di sisi kanan setiap baris item alat. Posisi ini sesuai dengan pola gerak alami jari pengguna (sweep ke kanan), sehingga mempercepat interaksi dan meminimalkan kesalahan klik.\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 7.2  Prinsip Gestalt \u8212? Pengelompokan Visual Statistik\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Prinsip Gestalt menjelaskan cara otak manusia mengelompokkan elemen visual secara alami tanpa perlu diarahkan secara eksplisit.\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Penerapan di E-Lab Elektro: Law of Proximity (Kedekatan) diterapkan pada widget statistik inventaris \u8212? Total Alat, Tersedia di Rak, Alat Rusak, dan Pinjaman Aktif dikelompokkan secara rapat dalam satu baris grid. Law of Similarity (Kesamaan) diterapkan melalui kode warna konsisten: hijau untuk ketersediaan, merah untuk masalah/rusak, biru untuk aktivitas aktif. Mahasiswa dapat langsung mengenali pola status tanpa membaca teks detail satu per satu.\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 7.3  Mengapa Sidebar di Sisi Kiri?\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Penelitian eye-tracking F-Pattern dari Nielsen Norman Group menunjukkan bahwa pengguna web membaca dari kiri ke kanan dan dari atas ke bawah. Sidebar kiri memanfaatkan zona pertama yang dilihat mata, sehingga navigasi dapat ditemukan secara instan tanpa pencarian. Di E-Lab Elektro, sidebar lebar 250px memuat ikon Font Awesome 6 beserta label teks, dan collapsed otomatis pada layar di bawah 768px untuk mobile.\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 7.4  Mengapa Donut Chart untuk Dashboard?\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Donut chart dipilih untuk menampilkan proporsi status kesehatan alat karena: (1) lebih efisien secara ruang dibandingkan bar chart untuk data perbandingan proporsi; (2) angka total di tengah lingkaran memberikan konteks langsung; (3) interaksi hover tooltip natural. Implementasi menggunakan Chart.js dengan animasi easeInOutQuart 1.5 detik untuk pengalaman yang premium.\par
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 8. EVALUASI HEURISTIK NIELSEN\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Evaluasi dilakukan mengacu pada 10 prinsip usability Jakob Nielsen. Lima prinsip yang paling relevan dievaluasi secara mendalam terhadap sistem E-Lab Elektro (sesuai Tab 4 website), dengan skala Severity Rating 0-4:\par
+\pard\sb0\sa40\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b Keterangan Severity Rating:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   0 = Bukan masalah usability\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   1 = Cosmetic \u8212? perbaiki jika ada waktu\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   2 = Minor \u8212? prioritas rendah\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   3 = Major \u8212? perlu segera diperbaiki\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   4 = Catastrophe \u8212? wajib diperbaiki sebelum rilis\par
+\pard\sb0\sa120\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 No.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Prinsip Heuristik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Implementasi & Temuan di E-Lab Elektro\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Severity\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Desain Perbaikan yang Diterapkan\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Visibility of System Status\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 User bingung saat memproses peminjaman karena layar terasa "hang". Status loading tersembunyi pada saat pengajuan dikirimkan ke server.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3 \u8212? Major\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Menambahkan indikator loading spinner yang menutupi layar saat pengajuan dilakukan, dilengkapi progress bar pada alur keranjang peminjaman.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Match Between System & Real World\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sistem awalnya menggunakan istilah teknis database seperti id_alat dan user_role yang membingungkan mahasiswa awam.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 2 \u8212? Minor\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mengganti seluruh istilah teknis dengan bahasa sehari-hari di kampus: "Nama Alat", "NPM", "Penjaga Lab", "Denda Telat".\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 User Control and Freedom\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pengguna tidak sengaja menambah alat ke keranjang namun tidak ada opsi untuk membatalkan atau menghapus sebelum pengajuan dikirim.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3 \u8212? Major\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Menyediakan tombol "Hapus" (ikon tong sampah) di setiap item keranjang belanja, serta tombol "Kembali / Batal" di setiap halaman modal formulir.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H4\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Consistency & Standards\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tombol aksi menggunakan warna berbeda-beda di halaman yang berbeda: kadang biru, oranye, atau hijau untuk aksi yang sama (simpan/ajukan).\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 2 \u8212? Minor\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Standarisasi warna tombol: Oranye (#ea580c) untuk aksi utama/pengajuan, Abu-abu untuk batal/kembali, Merah (#ef4444) untuk hapus/peringatan.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H5\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Error Prevention\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa dapat mengetikkan jumlah pinjam melebihi stok tersedia di rak fisik, sehingga memicu error pada database dan proses tidak bisa dilanjutkan.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 4 \u8212? Catastrophe\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Menambahkan validasi frontend secara real-time. Tombol "Pinjam" otomatis nonaktif (disabled) jika stok alat bernilai 0 atau jumlah input melebihi stok.\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 9. HASIL PENGUJIAN SYSTEM USABILITY SCALE (SUS)\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Pengujian usability empiris dilakukan menggunakan instrumen System Usability Scale (SUS) standar dengan skala 10 pertanyaan, melibatkan 10 responden aktif dari kalangan mahasiswa dan penjaga laboratorium Teknik Elektro USK.\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Metrik\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Hasil\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Jumlah Responden\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 10 responden (mahasiswa aktif & penjaga lab Teknik Elektro USK)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Skor SUS\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 82.5 / 100\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kategori\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 EXCELLENT \u8212? Grade A (Highly Acceptable)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Visualisasi Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Gauge meter speedometer SVG dengan animasi jarum dari 0 ke 148.5 derajat (82.5% dari 180\'b0)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Q1: "Sistem mudah digunakan"\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 90% Responden Setuju\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Q2: "Alur peminjaman sangat praktis"\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 85% Responden Setuju\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Q3: "Tidak perlu bantuan teknisi untuk memahami sistem"\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 80% Responden Setuju\cell
+\row
+\pard\sb0\sa120\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 9.1  Skenario Tugas Usability Testing\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Sebelum mengisi kuesioner SUS, seluruh 10 responden diminta menyelesaikan 3 skenario tugas nyata berikut:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx6500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 No.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Nama Tugas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Instruksi Tugas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Prinsip yang Diuji\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pencarian & Ketersediaan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Cari alat "Oscilloscope Digital" di katalog, cek jumlah unit yang tersisa di rak lab, dan pastikan statusnya "Tersedia".\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H1 (Visibility) & H2 (Real World)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Proses Peminjaman\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tambahkan alat tersebut ke Keranjang Belanja, buka keranjang, isi formulir dengan NPM yang valid, lalu kirim pengajuan.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H3 (User Control) & H4 (Consistency)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pencegahan Kesalahan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Coba input jumlah peminjaman melebihi stok (misalnya 99 unit) untuk memverifikasi apakah sistem menolak input tersebut secara otomatis.\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 H5 (Error Prevention) \u8212? Severity 4\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 10. PROTOTYPE INTERAKTIF\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Tab 6 website menampilkan simulator prototype clickable yang mensimulasikan alur peminjaman mahasiswa secara penuh dalam 4 langkah (wizard steps). Prototype ditampilkan dalam frame browser palsu untuk memberi kesan yang realistis.\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Step\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Nama Layar\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Konten & Interaksi\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Step 1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pilih Alat\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Alert info: "Selamat Datang di Portal Mahasiswa. Pilih salah satu alat untuk mulai meminjam." | Daftar: Oscilloscope Digital (12 Unit), Signal Generator Rigol (5 Unit), Multimeter Fluke (8 Unit). Tombol "Pinjam ->" orange di kanan setiap item.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Step 2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Isi Formulir Peminjaman\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Form berisi: NPM (pre-filled: 250420501100004, readonly), Tanggal Kembali (date picker), Jumlah Unit (number input dengan max = stok). Validasi: tombol "Ajukan" disabled jika jumlah > stok maks atau NPM kosong.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Step 3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Konfirmasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Ringkasan: nama alat, jumlah, tanggal kembali, catatan "denda Rp 5.000/hari jika terlambat". Alert: "Pastikan data sudah benar sebelum konfirmasi."\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Step 4\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pengajuan Berhasil\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Ikon centang hijau besar. Pesan: "Menunggu konfirmasi dari Penjaga Lab". Nomor referensi: REF-2025-XXXX. Tombol: "Kembali ke Katalog" (orange) dan "Cek Status Pinjam".\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 11. KNOWLEDGE GRAPH VISUALIZATION DESIGN\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Tab 5 website menampilkan visualisasi Knowledge Graph interaktif berbasis SVG dengan 7 node (5 default + 2 tersembunyi yang muncul saat ekspansi), panel Semantic Filtering, dan panel Detail Entitas Semantik.\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 11.1  Node Style \u8212? Desain Simpul Entitas\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 ID\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Nama Entitas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Tipe\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Warna Node\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Data Semantik\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N1\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dwiky Ilham\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #10b981 (Hijau)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 NPM: 250420501100004. Sedang meminjam Oscilloscope untuk Tugas Akhir.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N2\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Oscilloscope Tektronix\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Alat Inventaris\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #f59e0b (Emas)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Status: Dipinjam Dwiky. Terletak di Lab Telekomunikasi.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N3\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Praktikum Mikroprosesor\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mata Kuliah\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #8b5cf6 (Ungu)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kode: EL-302. Membutuhkan Oscilloscope dan Signal Generator.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N4\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dr. Misbah Anuari\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dosen Pembimbing\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #3b82f6 (Biru)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mengajar Praktikum Mikroprosesor & membimbing Tugas Akhir Dwiky.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N5\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Lab Telekomunikasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Ruang Laboratorium\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #ec4899 (Pink)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Lokasi penyimpanan utama alat ukur frekuensi tinggi.\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N6*\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Signal Generator Rigol\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Alat Inventaris\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #f59e0b (Emas)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tersedia di rak. *Muncul setelah double-click N2 (Oscilloscope).\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2500\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx4200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5700\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 N7*\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Naza Fahrul Sirait\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa Kelompok\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #10b981 (Hijau)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 NPM: 250420501100002. Rekan kelompok TA Dwiky. *Muncul setelah double-click N1 (Dwiky).\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 11.2  Edge Style \u8212? Desain Relasi Semantik\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Dari Node\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Label Relasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Ke Node\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Warna Edge\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dwiky (N1)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 MEMINJAM\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Oscilloscope (N2)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #ef4444 \u8212? Merah (panah tebal)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dr. Misbah (N4)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 MENGAJAR\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Prak. Mikro (N3)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #8b5cf6 \u8212? Ungu\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Oscilloscope (N2)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 TERLETAK_DI\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Lab Tele (N5)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #f59e0b \u8212? Emas\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Prak. Mikro (N3)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 DILAKSANAKAN_DI\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Lab Tele (N5)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #f59e0b \u8212? Emas\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Oscilloscope (N2)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 DIGUNAKAN_DI\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Prak. Mikro (N3)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #10b981 \u8212? Hijau\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dr. Misbah (N4)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 MEMBIMBING\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dwiky (N1)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #3b82f6 \u8212? Biru\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Signal Gen (N6)*\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 TERHUBUNG\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Oscilloscope (N2)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #64748b \u8212? Abu (hidden awal)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Naza (N7)*\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 REKAN_KLP\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dwiky (N1)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #3b82f6 \u8212? Biru (hidden awal)\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 11.3  Semantic Filtering \u8212? Filter Entitas\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Panel "Semantic Filtering" di sisi kanan graf menyediakan 5 checkbox yang dapat digunakan untuk menyaring tampilan node secara real-time:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Filter\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Warna\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Default\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Efek Saat Di-uncheck\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa (Student)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #10b981 \u8212? Hijau\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Checked (Aktif)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sembunyikan N1 (Dwiky) dan N7 (Naza) beserta semua edge-nya\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Alat (Equipment)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #f59e0b \u8212? Emas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Checked (Aktif)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sembunyikan N2 (Oscilloscope) dan N6 (Signal Gen) beserta edge-nya\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mata Kuliah (Course)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #8b5cf6 \u8212? Ungu\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Checked (Aktif)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sembunyikan N3 (Prak. Mikro) beserta semua edge-nya\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dosen (Lecturer)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #3b82f6 \u8212? Biru\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Checked (Aktif)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sembunyikan N4 (Dr. Misbah) beserta semua edge-nya\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx2000\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx3600\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5100\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Ruang Lab (Lab Room)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 #ec4899 \u8212? Pink\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Checked (Aktif)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sembunyikan N5 (Lab Tele) beserta semua edge-nya\cell
+\row
+\pard\sb0\sa160\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 11.4  Node Expansion Interaction\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Interaksi yang dapat dilakukan pengguna terhadap node dalam graf:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Single Click: Menampilkan panel "Detail Entitas Semantik" di sidebar kanan dengan nama, tipe, dan deskripsi atribut semantik node.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Double-click N1 (Dwiky): Memunculkan Node N7 (Naza Fahrul Sirait) beserta edge REKAN_KLP yang sebelumnya tersembunyi.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Double-click N2 (Oscilloscope): Memunculkan Node N6 (Signal Generator Rigol) beserta edge TERHUBUNG yang sebelumnya tersembunyi.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Tombol "Reset Grafik": Menyembunyikan kembali N6 dan N7, mengembalikan semua filter ke posisi aktif (semua checked).\par
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 12. PERBANDINGAN RELATIONAL VS KNOWLEDGE GRAPH UI\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Sistem E-Lab Elektro mengimplementasikan kedua paradigma dalam satu platform yang terintegrasi. Berikut perbandingan komprehensif keduanya:\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Aspek UI/UX\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Relational System (CRUD)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Knowledge Graph System\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Paradigma Interaksi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Linear & prosedural \u8212? pengguna mengikuti alur form yang sudah ditentukan sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Eksploratori & non-linear \u8212? pengguna bebas menjelajahi relasi antar data\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Komponen Utama\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Form input, tabel data DataTable, modal konfirmasi, dropdown filter kategori\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Canvas SVG graf, panel node detail, checkbox semantic filter, tombol expand/reset\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dashboard\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Statistik numerik (total, tersedia, rusak, aktif), donut chart proporsi, alert keterlambatan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Peta relasi semantik, eksplorasi cluster, visualisasi hubungan multi-hop antar entitas\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Navigasi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sidebar hierarkis ke halaman terpisah per fitur, breadcrumb linear\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Single-page exploration \u8212? semua relasi terlihat sekaligus, navigasi via klik node\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Target Pengguna\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Mahasiswa & Penjaga Lab \u8212? kebutuhan CRUD efisien dan cepat\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Kaprodi & Admin \u8212? analitik mendalam dan insight relasi data\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Learning Curve\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Rendah \u8212? familiar dengan form dan tabel web umum\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Sedang-Tinggi \u8212? perlu familiarisasi konsep graf dan gesture double-click\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1800\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx5400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Contoh Query\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 SELECT * FROM transaksi WHERE status = "Dipinjam" (3 baris)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 MATCH (m)-[:MEMINJAM]->(a:Alat) RETURN m,a (2 baris Cypher)\cell
+\row
+\pard\sb0\sa120\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 12.1  Perbandingan Query: SQL JOIN vs Cypher MATCH\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Kasus: Mencari alat yang dipinjam oleh seluruh anggota kelompok tugas akhir Dwiky Ilham (NPM: 250420501100004):\par
+\pard\sb0\sa80\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx1400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx6900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Sistem\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Query\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Jumlah Baris\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Relational SQL\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 SELECT a.nama_alat, u.nama_lengkap FROM transaksi t INNER JOIN users u ON t.username = u.username INNER JOIN alat a ON t.id_alat = a.id WHERE u.username IN (SELECT kelompok_user FROM kelompok WHERE nama_kelompok = (SELECT nama_kelompok FROM kelompok k INNER JOIN users us ON k.id_mahasiswa = us.id WHERE us.username = '250420501100004'))\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 10 baris \u8212? nested subquery kompleks\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6900\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Knowledge Graph Cypher\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 MATCH (m1:Mahasiswa \{username: '250420501100004'\}) -[:REKAN_KLP]-(m2:Mahasiswa) -[:MEMINJAM]->(a:Alat) RETURN a.nama_alat, m2.nama_lengkap\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 3 baris \u8212? ekspresif & readable\cell
+\row
+\pard\ql\sb280\sa80\f0\fs24\cf0\sl360\slmult1\b 13. KESIMPULAN DAN SARAN\par
+\pard\ql\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 13.1  Kesimpulan\par
+\pard\qj\sb0\sa120\f0\fs24\cf0\sl360\slmult1\b0 Evaluasi UI/UX sistem E-Lab Elektro menggunakan pendekatan UCD dan Evaluasi Heuristik Nielsen menghasilkan temuan berikut:\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Empat persona pengguna (Dwiky \u8212? Mahasiswa, Misbah \u8212? Penjaga Lab, Rana \u8212? Kaprodi, Administrator) telah diidentifikasi secara spesifik dengan kebutuhan yang diterjemahkan ke fitur nyata dalam sistem.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Alur interaksi dual-paradigma \u8212? CRUD linear untuk peminjaman dan eksplorasi non-linear untuk Knowledge Graph \u8212? berhasil diimplementasikan dalam satu platform terintegrasi.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Skor SUS 82.5/100 (EXCELLENT Grade A) dari 10 responden membuktikan tingkat penerimaan pengguna yang sangat tinggi.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Dari 5 heuristik Nielsen yang dievaluasi: 1 masalah Catastrophe (H5 \u8212? validasi stok) sudah diperbaiki, 2 masalah Major (H1 loading spinner, H3 tombol hapus keranjang) sudah diperbaiki, dan 2 masalah Minor (H2 istilah teknis, H4 konsistensi warna) sudah distandarisasi.\par
+\pard\qj\li560\fi-280\sb0\sa80\f0\fs24\cf0\sl360\slmult1\b0 \bullet   Knowledge Graph berhasil memvisualisasikan 5 tipe entitas dan 8 relasi semantik dalam satu canvas SVG interaktif, dengan kemampuan ekspansi node dan semantic filtering yang melampaui kemampuan tabel SQL tradisional.\par
+\pard\sb0\sa80\par
+\pard\ql\sb200\sa80\f0\fs24\cf0\sl360\slmult1\b 13.2  Saran Pengembangan\par
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\clcbpat1\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Prioritas\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Saran Pengembangan\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b\f0\fs22\cf0 Dampak\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 P1 \u8212? Tinggi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Integrasikan node Knowledge Graph dengan query database real-time (saat ini data masih hardcoded di SVG)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Graf menampilkan data transaksi nyata dari MySQL secara dinamis\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 P1 \u8212? Tinggi\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tambahkan lebih banyak trigger node expansion (double-click N5 Lab Tele menampilkan semua alat di lab tersebut)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Pengalaman eksplorasi KG yang lebih kaya dan informatif\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 P2 \u8212? Sedang\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Implementasi animasi progress bar multi-step di prototype (Step 1-2-3-4 dengan progress indicator di atas)\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Meningkatkan Visibility of System Status (H1)\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 P2 \u8212? Sedang\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Tambahkan Q4-Q10 kuesioner SUS dengan progress bar interaktif di Tab 4 website\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Dokumentasi SUS yang lebih lengkap dan dapat dikumpulkan secara digital\cell
+\row
+\trowd\trgaph80\trleft0 \clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx1200\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx6400\clbrdrt\brdrs\brdrw8\clbrdrl\brdrs\brdrw8\clbrdrb\brdrs\brdrw8\clbrdrr\brdrs\brdrw8\cellx8900
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 P3 \u8212? Rendah\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Gantikan SVG static dengan library vis.js Network untuk physics simulation yang lebih dinamis\cell
+\pard\intbl\ql\sb60\sa60\sl276\slmult1\b0\f0\fs22\cf0 Graf lebih responsif dan node dapat di-drag secara bebas\cell
+\row
+\pard\qc\sb300\sa120\f0\fs24\cf0\sl360\slmult1\b DAFTAR PUSTAKA\par
+\pard\qc\sb0\sa120\brdrb\brdrs\brdrw6\brdrcf0 \par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 1. Nielsen, J. (1994). Usability Engineering. Morgan Kaufmann Publishers. San Francisco, CA.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 2. Nielsen, J. (1995). 10 Usability Heuristics for User Interface Design. Nielsen Norman Group. https://www.nngroup.com/articles/ten-usability-heuristics/\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 3. Brooke, J. (1996). SUS: A quick and dirty usability scale. In P. W. Jordan, B. Thomas, B. A. Weerdmeester, & I. L. McClelland (Eds.), Usability evaluation in industry (pp. 189-194). Taylor and Francis, London.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 4. Norman, D. A. (2013). The Design of Everyday Things: Revised and Expanded Edition. Basic Books. New York.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 5. Fitts, P. M. (1954). The information capacity of the human motor system in controlling the amplitude of movement. Journal of Experimental Psychology, 47(6), 381-391.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 6. Wertheimer, M. (1923). Laws of Organization in Perceptual Forms (W. Ellis, Trans.). London: Kegan Paul, Trench, Trubner & Company.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 7. ISO 9241-210:2019. Ergonomics of human-system interaction \u8212? Part 210: Human-centred design for interactive systems. Geneva: ISO.\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 8. W3C. (2023). Web Content Accessibility Guidelines (WCAG) 2.1. https://www.w3.org/WAI/WCAG21/quickref/\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 9. Bootstrap Team. (2024). Bootstrap 5.3 Documentation. https://getbootstrap.com/docs/5.3/\par
+\pard\qj\fi-500\li500\sb0\sa100\f0\fs24\cf0\sl360\slmult1\b0 10. CodeIgniter Foundation. (2024). CodeIgniter 4.x User Guide. https://codeigniter.com/user_guide/\par
+}
